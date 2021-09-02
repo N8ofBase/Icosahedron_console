@@ -1,0 +1,1 @@
+const Rival = require('../rival.js');
