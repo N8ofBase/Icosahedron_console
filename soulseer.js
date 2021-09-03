@@ -1,5 +1,6 @@
-const Being = requires("./being.js")  
+const Hero = require("./hero.js")  
 
-class SoulSeer extends Being {
+class SoulSeer extends Hero {
   
 }
+module.export = SoulSeer;

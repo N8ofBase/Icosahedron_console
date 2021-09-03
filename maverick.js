@@ -1,5 +1,6 @@
-const Being = requires("./being.js")
+const Hero = require("./hero.js")
 
-class Maverick extends Being {
+class Maverick extends Hero {
   
 }
+module.export = Maverick;

@@ -1,6 +1,6 @@
-const Being= require('./being.js');
+const Hero= require('./hero.js');
 
-class Champion extends Being {
+class Champion extends Hero {
      
   }
 
