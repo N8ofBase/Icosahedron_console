@@ -47,6 +47,8 @@ describe("Being class", function(){
   it("should have an orderRoll() to determine the turn order.", function() {
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 10, 1, 6);
     expect(hero.orderRoll(hero) > 10).toBeTrue();
-  })
+  });
+
+  
 });
 
