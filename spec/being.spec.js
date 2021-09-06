@@ -1,6 +1,17 @@
 const Being = require('../being.js');
+const Loot = require('../loot.js')
+const Food = require('../food.js');
+const Weapon = require('../weapon.js');
 
 describe("Being class", function(){
+
+  // let weapon = new Weapon('Broadsword', 'Sturdy and versitile. Pairs well with a shield', 1, Math.floor(Math.random()*6) + 1);
+
+  // let jeewa = new Food("Jeewa fruit", "sweet brown fruit used to restore life", 2, 1);
+
+  // let wood = new Loot('Wood', 'Hard piece of wood', 2);
+
+  // let hero = new Being('Champion', 'champion', 42, 40, 3, 15, 3, 1, 1, weapon, [jeewa, wood]);
 
   it("constructor sets name, title, life, attack, defense, magic, speed, charm, weapon", function() {
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 1, 1, 6);
@@ -49,6 +60,30 @@ describe("Being class", function(){
     expect(hero.orderRoll(hero) > 10).toBeTrue();
   });
 
+it('should be able to consume items from pack', function() {
+
+  let weapon = new Weapon('Broadsword', 'Sturdy and versitile. Pairs well with a shield', 1, Math.floor(Math.random()*6) + 1);
+
+  let jeewa = new Food("Jeewa fruit", "sweet brown fruit used to restore life", 2, 1);
+
+  let wood = new Loot('Wood', 'Hard piece of wood', 2);
+
+  let hero = new Being('Champion', 'champion', 42, 40, 3, 15, 3, 1, 1, weapon, [jeewa, wood]);
+  hero.consume(hero, hero.pack[0]);
+  expect(hero.pack[0].healing).toEqual(1); 
+})
   
+it('should reduce the quantity of the item consumed with consume()', function() {
+
+  let weapon = new Weapon('Broadsword', 'Sturdy and versitile. Pairs well with a shield', 1, Math.floor(Math.random()*6) + 1);
+
+  let jeewa = new Food("Jeewa fruit", "sweet brown fruit used to restore life", 3, 1);
+
+  let wood = new Loot('Wood', 'Hard piece of wood', 2);
+
+  let hero = new Being('Champion', 'champion', 42, 40, 3, 15, 3, 1, 1, weapon, [jeewa, wood]);
+  hero.consume(hero, hero.pack[0]);
+  expect(hero.pack[0].quantity).toEqual(2);
+})  
 });
 

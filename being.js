@@ -47,6 +47,19 @@ class Being {
     let orderRoll = hero.rollD20() + hero.speed;
     return orderRoll;
   }
+
+  consume(hero, loot) {
+    let healing = loot.healing;
+    if(hero.life < hero.maxLife) {
+      hero.life = hero.life + healing;
+      loot.quantity--;
+      if(hero.life > hero.maxLife) {
+        hero.life = hero.maxLife;
+      }
+    } else {
+      return 'Not Hungry'
+    }
+  }
 }
 
 module.exports = Being;

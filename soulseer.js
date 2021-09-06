@@ -3,4 +3,4 @@ const Hero = require("./hero.js")
 class SoulSeer extends Hero {
   
 }
-module.export = SoulSeer;
+module.exports = SoulSeer;
