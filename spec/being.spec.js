@@ -35,13 +35,13 @@ describe("Being class", function(){
   it('checks life with iDie() returning "Game Over" if life is 0', function(){
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 1, 1, 6);
     hero.life = 0;
-    expect(hero.iDie(hero.life)).toEqual("Game Over");
+    expect(hero.iDie()).toEqual("Game Over");
   });
 
   it('removes life from target with attackRival()', function () {
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 1, 1, 6);
     let rival = new Being('Rival', 'rival', 25, 25, 2, 0, 2, 2, 1, 4);
-    hero.attackTarget(hero, rival);
+    hero.attackTarget(rival);
   
     expect(rival.life < rival.maxLife).toBeTrue();
   });
@@ -50,14 +50,14 @@ describe("Being class", function(){
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 1, 1, 6);
     let rival = new Being('Rival', 'rival', 25, 25, 2, 30, 2, 2, 1, 4);
     
-    hero.attackTarget(hero, rival);
+    hero.attackTarget(rival);
   
     expect(rival.life == rival.maxLife).toBeTrue();
   });
 
   it("should have an orderRoll() to determine the turn order.", function() {
     let hero = new Being('Champion', 'champion', 42, 42, 3, 15, 3, 10, 1, 6);
-    expect(hero.orderRoll(hero) > 10).toBeTrue();
+    expect(hero.orderRoll() > 10).toBeTrue();
   });
 
 it('should be able to consume items from pack', function() {
@@ -69,7 +69,7 @@ it('should be able to consume items from pack', function() {
   let wood = new Loot('Wood', 'Hard piece of wood', 2);
 
   let hero = new Being('Champion', 'champion', 42, 40, 3, 15, 3, 1, 1, weapon, [jeewa, wood]);
-  hero.consume(hero, hero.pack[0]);
+  hero.consume(hero.pack[0]);
   expect(hero.pack[0].healing).toEqual(1); 
 })
   
@@ -82,7 +82,7 @@ it('should reduce the quantity of the item consumed with consume()', function() 
   let wood = new Loot('Wood', 'Hard piece of wood', 2);
 
   let hero = new Being('Champion', 'champion', 42, 40, 3, 15, 3, 1, 1, weapon, [jeewa, wood]);
-  hero.consume(hero, hero.pack[0]);
+  hero.consume(hero.pack[0]);
   expect(hero.pack[0].quantity).toEqual(2);
 })  
 });

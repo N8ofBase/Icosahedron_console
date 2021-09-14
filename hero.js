@@ -7,27 +7,15 @@ class Hero extends Being {
     this.speedAbility=speedAbility; this.charmAbility=charmAbility;
   }
 
-
-
-search(hero){
-  let searchRoll = hero.rollD20() + hero.charm;
-  if(searchRoll >= 10) {
-    return 'found';
-  }else {
-    return 'nothing';
-  }
-  
-}
-
-loot(hero, target) {
+loot(target) {
   
   for(let i=0; i < target.pack.length; i++) {
     
-    if(target.pack[i] === hero.pack[i]) {
-      hero.pack[i].quantity++;
+    if(target.pack[i] === this.pack[i]) {
+      this.pack[i].quantity++;
       target.pack.splice(i, 1);
-    }if(target.pack[i] !== hero.pack[i]){
-       hero.pack.push(target.pack[i])
+    }if(target.pack[i] !== this.pack[i]){
+       this.pack.push(target.pack[i])
        target.pack.splice(i, 1);
     }
     
